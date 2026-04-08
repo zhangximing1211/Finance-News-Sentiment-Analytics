@@ -1,0 +1,194 @@
+{
+  "raw": {
+    "path": "/Users/zhangximing/Desktop/Finance News Sentiment Analytics/data/raw/all-data.csv",
+    "rows": 4846,
+    "label_distribution": {
+      "negative": 604,
+      "neutral": 2879,
+      "positive": 1363
+    },
+    "encoding": "ISO-8859-1",
+    "csv_reader": "python csv.reader after CR/LF normalization"
+  },
+  "label_mapping": {
+    "raw_to_label": {
+      "negative": "negative",
+      "neutral": "neutral",
+      "positive": "positive"
+    },
+    "label_to_id": {
+      "negative": 0,
+      "neutral": 1,
+      "positive": 2
+    }
+  },
+  "cleaning": {
+    "artifact_rows": 405,
+    "control_char_rows": 17,
+    "quote_normalized_rows": 303,
+    "replacement_rules": [
+      {
+        "\r\n": "\n"
+      },
+      {
+        "\r": "\n"
+      },
+      {
+        "+  x201a -õ": " EUR "
+      },
+      {
+        "+â": " EUR "
+      },
+      {
+        "+EUR TM s": "'s"
+      },
+      {
+        "+ s": "'s"
+      },
+      {
+        "- s": "'s"
+      },
+      {
+        "-": "'"
+      },
+      {
+        "- ;": " "
+      },
+      {
+        "-": " "
+      },
+      {
+        "+Æ": "ä"
+      },
+      {
+        "+_": "å"
+      },
+      {
+        "+¦": "ö"
+      },
+      {
+        "+": "ê"
+      },
+      {
+        "+è": "á"
+      },
+      {
+        "£": ""
+      },
+      {
+        "ð": "u"
+      },
+      {
+        "``": "\""
+      },
+      {
+        "''": "\""
+      }
+    ]
+  },
+  "deduplication": {
+    "exact_duplicates_removed": 6,
+    "conflicting_duplicate_rows_removed": 4,
+    "conflicting_duplicate_groups": 2,
+    "rows_after_cleaning": 4846,
+    "rows_after_deduplication": 4836
+  },
+  "splits": {
+    "train": {
+      "rows": 3868,
+      "label_distribution": {
+        "negative": 482,
+        "neutral": 2297,
+        "positive": 1089
+      }
+    },
+    "val": {
+      "rows": 484,
+      "label_distribution": {
+        "negative": 61,
+        "neutral": 287,
+        "positive": 136
+      }
+    },
+    "test": {
+      "rows": 484,
+      "label_distribution": {
+        "negative": 61,
+        "neutral": 287,
+        "positive": 136
+      }
+    }
+  },
+  "text_length": {
+    "char_min": 9,
+    "char_p50": 119.0,
+    "char_p95": 232.25,
+    "char_max": 315,
+    "word_min": 2,
+    "word_p50": 21.0,
+    "word_p95": 42.0,
+    "word_max": 81
+  },
+  "class_imbalance": {
+    "counts": {
+      "negative": 604,
+      "neutral": 2871,
+      "positive": 1361
+    },
+    "ratios": {
+      "negative": 0.1249,
+      "neutral": 0.5937,
+      "positive": 0.2814
+    },
+    "majority_to_minority_ratio": 4.753,
+    "suggested_balanced_class_weights": {
+      "negative": 2.6689,
+      "neutral": 0.5615,
+      "positive": 1.1844
+    }
+  },
+  "conflicting_examples": [
+    {
+      "label_raw": "neutral",
+      "text_raw": "TELECOMWORLDWIRE-7 April 2006-TJ Group Plc sells stake in Morning Digital Design Oy Finnish IT company TJ Group Plc said on Friday 7 April that it had signed an agreement on selling its shares of Morning Digital Design Oy to Edita Oyj ."
+    },
+    {
+      "label_raw": "positive",
+      "text_raw": "TELECOMWORLDWIRE-7 April 2006-TJ Group Plc sells stake in Morning Digital Design Oy Finnish IT company TJ Group Plc said on Friday 7 April that it had signed an agreement on selling its shares of Morning Digital Design Oy to Edita Oyj ."
+    },
+    {
+      "label_raw": "positive",
+      "text_raw": "The Group 's business is balanced by its broad portfolio of sports and presence in all major markets ."
+    },
+    {
+      "label_raw": "neutral",
+      "text_raw": "The Group 's business is balanced by its broad portfolio of sports and presence in all major markets ."
+    }
+  ],
+  "exact_duplicate_examples": [
+    {
+      "label_raw": "neutral",
+      "text_raw": "The issuer is solely responsible for the content of this announcement ."
+    },
+    {
+      "label_raw": "neutral",
+      "text_raw": "The report profiles 614 companies including many key and niche players worldwide such as Black & Decker Corporation , Fiskars Corporation , Fiskars Brands , Inc. , Husqvarna Outdoor Products Inc. , K+S Group , Ryobi Technologies , Inc. , The Scotts Miracle-Gro Company , and Van Group , Inc. ."
+    },
+    {
+      "label_raw": "neutral",
+      "text_raw": "Ahlstrom 's share is quoted on the NASDAQ OMX Helsinki ."
+    },
+    {
+      "label_raw": "neutral",
+      "text_raw": "SSH Communications Security Corporation is headquartered in Helsinki , Finland ."
+    },
+    {
+      "label_raw": "neutral",
+      "text_raw": "Proha Plc ( Euronext :7327 ) announced today ( 19 May ) that its fully-owned subsidiary , Safran Software Solutions AS , has agreed to sell its 49 % share of Safran North America LLC to a SNA Holding AS , an investment group based in Norway ."
+    },
+    {
+      "label_raw": "neutral",
+      "text_raw": "The company serves customers in various industries , including process and resources , industrial machinery , architecture , building , construction , electrical , transportation , electronics , chemical , petrochemical , energy , and information technology , as well as catering and households ."
+    }
+  ]
+}

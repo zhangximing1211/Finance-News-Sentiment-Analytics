@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+finance_schemas/__init__.py
+finance_schemas/models.py
+finance_schemas.egg-info/PKG-INFO
+finance_schemas.egg-info/SOURCES.txt
+finance_schemas.egg-info/dependency_links.txt
+finance_schemas.egg-info/requires.txt
+finance_schemas.egg-info/top_level.txt

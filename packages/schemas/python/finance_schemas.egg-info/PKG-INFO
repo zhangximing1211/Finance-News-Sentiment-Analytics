@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: finance-schemas
+Version: 0.1.0
+Summary: Pydantic schemas for the finance sentiment agent.
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: pydantic<3.0,>=2.8
+
+# finance-schemas
+
+Pydantic models shared by the finance sentiment agent services and apps.

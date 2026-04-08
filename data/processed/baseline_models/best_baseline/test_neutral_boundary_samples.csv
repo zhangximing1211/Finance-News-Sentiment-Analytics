@@ -1,0 +1,33 @@
+sample_id,actual_label,predicted_label,confidence,top_label,second_label,top_probability,second_probability,neutral_probability,margin_to_decision,text
+2002,positive,neutral,0.4813,neutral,positive,0.4813,0.4782,0.4813,0.0032,Both the net sales and operating profit were record high in the company 's history .
+3577,neutral,neutral,0.3439,neutral,positive,0.3439,0.3405,0.3439,0.0034,"Finnish Neste Oil that was previously on the list , has fallen off the list completely ."
+4589,neutral,neutral,0.43,neutral,positive,0.43,0.4259,0.43,0.0041,"The highest growth would be in China , while weakening demand would continue in North America , UPM said ."
+2288,positive,positive,0.4917,positive,neutral,0.4917,0.4869,0.4869,0.0049,"Outokumpu of Finland , stainless steel manufacturer , plans to enter into a supply agreement with the Indian Railways ."
+825,positive,positive,0.4894,positive,neutral,0.4894,0.4839,0.4839,0.0056,"Citigroup , Inc ( NYSE : C ) has announced that its Global Transaction Services ( GTS ) business has been awarded a new mandate by Finland-based Pohjola Bank Group ."
+2707,neutral,neutral,0.4993,neutral,positive,0.4993,0.493,0.4993,0.0063,` Nordic infrastructure construction is one of our strategic growth areas .
+4517,neutral,neutral,0.3399,neutral,negative,0.3399,0.3317,0.3399,0.0082,Rosen was cautious about being too optimistic inregard to the second half of the year .
+3887,neutral,negative,0.4597,negative,neutral,0.4597,0.4501,0.4501,0.0096,The result before taxes was a loss of 25.0 million euros .
+4455,positive,neutral,0.4809,neutral,positive,0.4809,0.4679,0.4809,0.013,Elcoteq has a proven track record in electronics manufacturing services ( EMS ) and a global factory network coupled with modern manufacturing equipment and consistent systems and processes .
+4608,neutral,neutral,0.3715,neutral,negative,0.3715,0.3521,0.3715,0.0193,"The podcast , sees Harple provide the low-down on GyPSii 's platform , which takes someone 's location and demographic information to produce a contextual index of the world around them ."
+453,positive,neutral,0.4193,neutral,positive,0.4193,0.3991,0.4193,0.0202,The contracts have been signed to acquire uranium produced at the Sotkamo nickel-zinc mine in eastern Finland owned by Talvivaara .
+3569,neutral,positive,0.4294,positive,neutral,0.4294,0.4073,0.4073,0.0221,"EQ Bank forecasts Olvi 's net sales at EUR 67mn in the second quarter of 2009 , and operating profit at EUR 6.4 mn ."
+897,positive,neutral,0.3531,neutral,negative,0.3531,0.3298,0.3531,0.0233,The company said it observed a current stabilisation in prices and there is potential for higher prices for deliveries in the first quarter of 2011 .
+4400,negative,negative,0.4013,negative,neutral,0.4013,0.3773,0.3773,0.024,Net sales have been eaten by the weak US dollar .
+1755,positive,positive,0.4805,positive,neutral,0.4805,0.4501,0.4501,0.0304,"SysOpen Digia Plc , Press release , 7 February 2006 IBM Finland has rewarded its most distinguished partner companies for 2005 ."
+354,positive,neutral,0.4993,neutral,positive,0.4993,0.4684,0.4993,0.031,Operating profit of the Asian plants grew markedly .
+4282,neutral,neutral,0.5038,neutral,positive,0.5038,0.4708,0.5038,0.033,""" I 'm trying to deal with slavery from a different perspective to balance the story , "" says DeRamus , formerly a writer at the Detroit Free Press and the Detroit News ."
+731,negative,positive,0.5002,positive,neutral,0.5002,0.4667,0.4667,0.0335,"At this growth rate , paying off the national debt will be extremely painful ."
+3580,negative,neutral,0.412,neutral,negative,0.412,0.3761,0.412,0.0358,Finnish sports equipment company Amer Sports said it has decided to lay off 370 workers from its Salomon division in France .
+992,positive,positive,0.3688,positive,neutral,0.3688,0.3321,0.3321,0.0367,These moderate but significant changes resulted in a significant 24-32 % reduction in the estimated CVD risk .
+490,positive,neutral,0.3867,neutral,positive,0.3867,0.3413,0.3867,0.0454,"HELSINKI AFX - KCI Konecranes said it has raised its stake in MMH Holdings Inc , the owner of US-based Morris Materials Handling , to 90.9 pct from 74.5 pct ."
+4227,neutral,negative,0.4936,negative,neutral,0.4936,0.4443,0.4443,0.0493,"Some 250 people , of whom more than 200 are workers , will be retiring from the Raahe Works between 2008 and 2011 ."
+357,positive,neutral,0.4976,neutral,positive,0.4976,0.4471,0.4976,0.0504,Production capacity will increase from 36 000 to 85 000 tonnes per year and the raw material will continue to be recycled paper and board .
+1153,neutral,positive,0.5128,positive,neutral,0.5128,0.458,0.458,0.0548,"According to Tyrväinen 's estimation , Japan is a very essential location in terms of Finnair 's Asian strategy ."
+1722,positive,positive,0.4981,positive,neutral,0.4981,0.4416,0.4416,0.0565,Mr Lee said he hoped that Neste 's move will ` pave the way for more collaboration projects between our two countries ' .
+776,positive,positive,0.3876,positive,neutral,0.3876,0.3301,0.3301,0.0574,"Ragutis , which is based in Lithuania 's second-largest city Kaunas , boosted its sales last year 22.3 per cent to 36.4 million liters ."
+1608,neutral,positive,0.4747,positive,neutral,0.4747,0.417,0.417,0.0577,"The company had earlier said that it was considering different strategic options for the struggling low-cost mobile operator , including a divestment of its holding ."
+2791,neutral,neutral,0.5098,neutral,positive,0.5098,0.4441,0.5098,0.0657,"Altona stated that the private company of Altona chairman Kevin Maloney , Tulla Resources , would take up its entitlement in full ."
+2741,neutral,positive,0.5156,positive,neutral,0.5156,0.4459,0.4459,0.0697,Finnish Rautaruukki 's engineering division Ruukki Engineering will re-organise its operations in the Mo i Rana plant in Norway .
+4621,negative,negative,0.4439,negative,neutral,0.4439,0.3695,0.3695,0.0744,The measures result from decreased demand in technical design and product information .
+745,positive,positive,0.5287,positive,neutral,0.5287,0.4528,0.4528,0.0759,""" The margarine business has been put into good shape in the last two years , making it a natural addition to Bunge , which is looking to leverage its position in the Central and Northern European markets , "" Raisio CEO Matti Rihko said in a statement ."
+505,neutral,neutral,0.4715,neutral,negative,0.4715,0.3932,0.4715,0.0783,"The broad-based WIG index ended Thursday 's session 0.1 pct up at 65,003.34 pts , while the blue-chip WIG20 was 1.13 down at 3,687.15 pts ."

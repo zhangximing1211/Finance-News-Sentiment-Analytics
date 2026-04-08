@@ -1,0 +1,50 @@
+{
+  "model_name": "tfidf_linear_svm",
+  "model_family": "capability_module_v0",
+  "selection_metric": "macro_f1 on validation split, with ECE as tie-breaker",
+  "calibration": {
+    "method": "sigmoid",
+    "cv": 5,
+    "validation_ece": 0.0663
+  },
+  "abstain_policy": {
+    "low_confidence_threshold": 0.5,
+    "selection_note": "Threshold chosen to improve retained accuracy while keeping at least 70% coverage."
+  },
+  "review_queue_policy": {
+    "primary_trigger": "low_confidence",
+    "secondary_trigger": "neutral_boundary"
+  },
+  "neutral_boundary": {
+    "margin_threshold": 0.08
+  },
+  "class_imbalance_strategy": {
+    "type": "class_weight",
+    "value": "balanced",
+    "note": "Both Logistic Regression and Linear SVM are trained with class_weight='balanced'."
+  },
+  "comparison": [
+    {
+      "model_name": "tfidf_logistic_regression",
+      "accuracy": 0.7521,
+      "macro_f1": 0.6549,
+      "weighted_f1": 0.7285,
+      "ece": 0.0722,
+      "abstain_rate": 0.064,
+      "retained_accuracy": 0.777
+    },
+    {
+      "model_name": "tfidf_linear_svm",
+      "accuracy": 0.7645,
+      "macro_f1": 0.686,
+      "weighted_f1": 0.7488,
+      "ece": 0.0663,
+      "abstain_rate": 0.0702,
+      "retained_accuracy": 0.7933
+    }
+  ],
+  "train_rows": 3868,
+  "val_rows": 484,
+  "train_val_rows": 4352,
+  "artifact_path": "/Users/zhangximing/Desktop/Finance News Sentiment Analytics/data/processed/baseline_models/best_baseline.joblib"
+}
