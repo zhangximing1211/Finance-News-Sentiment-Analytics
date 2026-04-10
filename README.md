@@ -30,33 +30,35 @@
 
 ```text
 finance-sentiment-agent/
-├── apps/
-│   ├── web/
-│   └── api/
-├── services/
-│   ├── trainer/
-│   ├── model-serving/
-│   └── worker/
-├── packages/
-│   ├── schemas/
-│   ├── prompts/
-│   └── utils/
-├── data/
-│   ├── raw/
-│   ├── interim/
-│   └── processed/
-├── notebooks/
-│   └── eda/
-├── infra/
-│   ├── docker/
-│   └── github-actions/
-├── tests/
-│   ├── unit/
-│   ├── integration/
-│   └── eval/
+├── .env.example          # 环境变量模板
 ├── .github/workflows/
+│   └── ci.yml            # GitHub Actions CI
+├── Makefile              # 常用命令快捷入口
 ├── README.md
-└── Makefile
+├── apps/
+│   ├── api/              # FastAPI gateway
+│   └── web/              # Next.js dashboard
+├── services/
+│   ├── model-serving/    # 在线推理（analyzer / LLM reviewer）
+│   ├── trainer/          # 数据清洗、训练、评估
+│   └── worker/           # 异步任务、review queue、告警、日报/周报
+├── packages/
+│   ├── schemas/          # Pydantic models & TypeScript types
+│   ├── prompts/          # LLM prompt 模板
+│   └── utils/            # 通用文本/建模工具
+├── data/
+│   ├── raw/              # 原始语料
+│   ├── interim/          # review_queue.sqlite3 等中间产物
+│   └── processed/        # 训练/评估数据与报告
+├── notebooks/
+│   └── eda/              # 探索性分析 notebook
+├── infra/
+│   ├── docker/           # Dockerfile & docker-compose
+│   └── github-actions/   # CI/CD 脚本与约定
+└── tests/
+    ├── unit/
+    ├── integration/
+    └── eval/
 ```
 
 ## 职责划分
@@ -86,39 +88,83 @@ finance-sentiment-agent/
 
 ## 本地开发
 
+### 依赖安装
+
+```bash
+# Python 服务（API + model-serving + trainer + worker）
+python3 -m pip install -r apps/api/requirements.txt
+python3 -m pip install -r services/model-serving/requirements.txt
+python3 -m pip install -r services/trainer/requirements.txt
+python3 -m pip install -r services/worker/requirements.txt
+
+# 共享 schemas 包（editable 模式）
+python3 -m pip install -e packages/schemas/python
+
+# Web 前端
+npm --prefix apps/web install
+```
+
 ### API
 
 ```bash
-python3 -m pip install -r apps/api/requirements.txt
 uvicorn apps.api.app.main:app --reload --port 8000
+# 或
+make api
 ```
+
+### Web
+
+```bash
+npm --prefix apps/web run dev
+# 或
+make web
+```
+
+浏览器访问 `http://localhost:3000`，默认连接 `http://localhost:8000` 的 API。
 
 ### Trainer
 
 ```bash
-python3 -m pip install -r services/trainer/requirements.txt
-python3 services/trainer/scripts/prepare_data.py
-python3 services/trainer/scripts/train_baseline.py
-python3 services/trainer/scripts/evaluate.py --split test
-python3 services/trainer/scripts/train.py
+make audit-data        # 数据审计与切分
+make train-baseline    # baseline 训练
+make evaluate-baseline # baseline 评估
+make train             # 正式训练
 ```
 
 ### Tests
 
 ```bash
-python3 -m unittest discover -s tests
+make test
+# 等价于 python3 -m unittest discover -s tests
 ```
 
 ### Review Queue Worker
 
 ```bash
-python3 -m pip install -r services/worker/requirements.txt
-python3 services/worker/jobs/process_review_queue.py --limit 20
-python3 services/worker/jobs/daily_digest.py
-python3 services/worker/jobs/generate_agent_report.py --report-type daily
-python3 services/worker/jobs/generate_agent_report.py --report-type weekly
-python3 services/worker/jobs/run_feedback_loop_maintenance.py --report-type weekly
+make process-review-queue       # 处理 review queue
+make review-queue-digest        # 生成 review 摘要
+make daily-report               # 日报
+make weekly-report              # 周报
+make feedback-loop-maintenance  # 自动采样复核 + 周期性再训练检查
 ```
+
+### Makefile 速查
+
+| 目标 | 说明 |
+| --- | --- |
+| `make api` | 启动 FastAPI dev server（8000 端口） |
+| `make web` | 启动 Next.js dev server（3000 端口） |
+| `make test` | 运行全部测试 |
+| `make audit-data` | 数据审计与切分 |
+| `make train-baseline` | baseline 训练 |
+| `make evaluate-baseline` | baseline 评估 |
+| `make train` | 正式训练 |
+| `make process-review-queue` | 处理 review queue |
+| `make review-queue-digest` | review 摘要 |
+| `make daily-report` | 日报 |
+| `make weekly-report` | 周报 |
+| `make feedback-loop-maintenance` | 自动复核采样与再训练检查 |
+| `make tree` | 打印目录树 |
 
 ## Review Queue 与 LLM 解释
 
@@ -185,7 +231,12 @@ export NEUTRAL_BOUNDARY_MARGIN_OVERRIDE=0.08
 export REVIEW_QUEUE_DB_PATH=data/interim/review_queue.sqlite3
 ```
 
-也可以直接复制 [.env.example](/Users/zhangximing/Desktop/Finance%20News%20Sentiment%20Analytics/.env.example) 为根目录 `.env`，服务启动时会自动加载。
+也可以直接复制 `.env.example` 为根目录 `.env`，服务启动时会自动加载：
+
+```bash
+cp .env.example .env
+# 编辑 .env 填入你的 OPENAI_API_KEY
+```
 
 其中 `LOW_CONFIDENCE_THRESHOLD_OVERRIDE` 和 `NEUTRAL_BOUNDARY_MARGIN_OVERRIDE` 可用于线上或联调时临时覆盖低置信度阈值与 neutral 边界阈值，无需重训模型。
 
@@ -198,3 +249,29 @@ export REVIEW_QUEUE_DB_PATH=data/interim/review_queue.sqlite3
 - `LLMReviewer` 只在低置信度路径触发，正常高置信度样本不会额外调用外部 LLM
 - 数据审计与切分脚本在 `services/trainer/scripts/prepare_data.py`，会生成 `data/processed/*.csv`、`data_description.md` 和 `notebooks/eda/data_audit.ipynb`
 - baseline 训练脚本在 `services/trainer/scripts/train_baseline.py`，评估脚本在 `services/trainer/scripts/evaluate.py`
+
+## Docker 部署
+
+项目提供了 Docker Compose 配置，可一键启动 API 和 Web 服务：
+
+```bash
+cd infra/docker
+docker compose up --build
+```
+
+| 服务 | 端口 | Dockerfile |
+| --- | --- | --- |
+| api | 8000 | `infra/docker/api.Dockerfile` |
+| web | 3000 | `infra/docker/web.Dockerfile` |
+
+> `infra/docker/model-serving.Dockerfile` 目前仅供独立构建使用，尚未加入 `docker-compose.yml`。
+
+## CI/CD
+
+GitHub Actions 配置在 `.github/workflows/ci.yml`，在 `main`/`master` push 和 PR 时自动运行：
+
+- Python 3.13 环境
+- 安装 `model-serving` 和 `trainer` 依赖
+- 执行 `python -m unittest discover -s tests`
+
+> 当前 CI 暂未覆盖 `apps/api`、`services/worker` 的依赖安装，也暂无 Web 前端构建步骤。
