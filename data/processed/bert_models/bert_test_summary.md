@@ -1,42 +1,42 @@
-# Val
+# Bert Test
 
-- Split: `val`
+- Split: `test`
 - Rows: 484
-- Accuracy: 0.7521
-- Macro F1: 0.6549
-- Weighted F1: 0.7285
-- Expected Calibration Error: 0.0722
-- Multiclass Brier Score: 0.3562
-- Low-confidence threshold: 0.5
-- Coverage after abstain: 0.936
-- Abstain rate: 0.064
-- Retained accuracy: 0.777
-- Review queue size: 46
-- Neutral boundary sample count: 31
+- Accuracy: 0.907
+- Macro F1: 0.8975
+- Weighted F1: 0.9072
+- Expected Calibration Error: 0.0444
+- Multiclass Brier Score: 0.1562
+- Low-confidence threshold: 0.66
+- Coverage after abstain: 0.9649
+- Abstain rate: 0.0351
+- Retained accuracy: 0.9143
+- Review queue size: 17
+- Neutral boundary sample count: 1
 
 ## Per-class Metrics
 
 | label | precision | recall | f1 | support |
 | --- | ---: | ---: | ---: | ---: |
-| negative | 0.7812 | 0.4098 | 0.5376 | 61 |
-| neutral | 0.7340 | 0.9617 | 0.8326 | 287 |
-| positive | 0.8289 | 0.4632 | 0.5943 | 136 |
+| negative | 0.8406 | 0.9508 | 0.8923 | 61 |
+| neutral | 0.9359 | 0.9164 | 0.9261 | 287 |
+| positive | 0.8806 | 0.8676 | 0.8741 | 136 |
 
 ## Confusion Matrix
 
 | actual \ predicted | negative | neutral | positive |
 | --- | ---: | ---: | ---: |
-| negative | 25 | 32 | 4 |
-| neutral | 2 | 276 | 9 |
-| positive | 5 | 68 | 63 |
+| negative | 58 | 2 | 1 |
+| neutral | 9 | 263 | 15 |
+| positive | 2 | 16 | 118 |
 
 ## Decision Confusion Matrix
 
 | actual \ decision | negative | neutral | positive | abstain |
 | --- | ---: | ---: | ---: | ---: |
-| negative | 23 | 27 | 3 | 8 |
-| neutral | 1 | 272 | 5 | 9 |
-| positive | 4 | 61 | 57 | 14 |
+| negative | 55 | 2 | 1 | 3 |
+| neutral | 9 | 258 | 12 | 8 |
+| positive | 2 | 14 | 114 | 6 |
 
 ## Threshold Selection
 

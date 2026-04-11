@@ -1,0 +1,7 @@
+sample_id,actual_label,predicted_label,confidence,top_label,second_label,top_probability,second_probability,neutral_probability,margin_to_decision,text
+4263,neutral,positive,0.4987,positive,neutral,0.4987,0.4971,0.4971,0.0017,"The redesigned crushing circuit has been in operation since the start of September and its overall production rate on a weekly basis is in excess of an average of 40,000 tonnes a day ."
+2348,neutral,positive,0.5056,positive,neutral,0.5056,0.4923,0.4923,0.0133,""" Fixed Mobile Convergence solutions represent a key value proposition in today 's communication market ."
+1758,neutral,positive,0.5128,positive,neutral,0.5128,0.4852,0.4852,0.0276,The goal is to secure the company 's profitability and competitiveness .
+1955,neutral,neutral,0.5193,neutral,positive,0.5193,0.4786,0.5193,0.0407,Our purchase to pay solutions enable companies to gain visibility and control over business-critical financial processes .
+4536,neutral,positive,0.5202,positive,neutral,0.5202,0.4773,0.4773,0.0428,BioTie North-American licensing partner Somaxon Pharmaceuticals started a phase II-III clinical study in patients suffering from pathological gambling and a pilot phase II study in nicotine addiction smoking cessation .
+625,positive,positive,0.5329,positive,neutral,0.5329,0.4653,0.4653,0.0675,18 January 2010 - Finnish IT consultancy Trainers ' House Oyj HEL : TRH1V said last Friday it resolved to issue a EUR5m hybrid bond to domestic investors in a bid to strengthen its capital structure .

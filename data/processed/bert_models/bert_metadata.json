@@ -1,0 +1,80 @@
+{
+  "model_name": "finbert_finetuned",
+  "model_family": "transformer",
+  "pretrained_model": "ProsusAI/finbert",
+  "hyperparameters": {
+    "epochs": 4,
+    "batch_size": 16,
+    "max_seq_len": 128,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "seed": 42,
+    "freeze_layers": 8
+  },
+  "device": "mps",
+  "training_history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.0523,
+      "train_accuracy": 0.6448,
+      "val_loss": 0.2949,
+      "val_accuracy": 0.8616,
+      "val_macro_f1": 0.8591,
+      "lr": 1.665e-05
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.2785,
+      "train_accuracy": 0.8847,
+      "val_loss": 0.2669,
+      "val_accuracy": 0.9008,
+      "val_macro_f1": 0.8908,
+      "lr": 1.11e-05
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.2036,
+      "train_accuracy": 0.9186,
+      "val_loss": 0.2834,
+      "val_accuracy": 0.9091,
+      "val_macro_f1": 0.9016,
+      "lr": 5.55e-06
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.1584,
+      "train_accuracy": 0.9392,
+      "val_loss": 0.2943,
+      "val_accuracy": 0.8946,
+      "val_macro_f1": 0.8924,
+      "lr": 0.0
+    }
+  ],
+  "best_epoch": 3,
+  "best_val_macro_f1": 0.9016,
+  "calibration": {
+    "method": "softmax",
+    "validation_ece": 0.0325
+  },
+  "abstain_policy": {
+    "low_confidence_threshold": 0.66,
+    "selection_note": "Threshold chosen to improve retained accuracy while keeping at least 70% coverage."
+  },
+  "review_queue_policy": {
+    "primary_trigger": "low_confidence",
+    "secondary_trigger": "neutral_boundary"
+  },
+  "neutral_boundary": {
+    "margin_threshold": 0.08
+  },
+  "class_imbalance_strategy": {
+    "type": "class_weight",
+    "value": "inverse_frequency",
+    "note": "CrossEntropyLoss with inverse-frequency class weights."
+  },
+  "selection_metric": "macro_f1 on validation split",
+  "train_rows": 3868,
+  "val_rows": 484,
+  "artifact_path": "/Users/zhangximing/Desktop/Finance News Sentiment Analytics/data/processed/bert_models/best_model"
+}

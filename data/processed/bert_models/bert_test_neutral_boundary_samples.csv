@@ -1,0 +1,2 @@
+sample_id,actual_label,predicted_label,confidence,top_label,second_label,top_probability,second_probability,neutral_probability,margin_to_decision,text
+986,positive,positive,0.5346,positive,neutral,0.5346,0.4636,0.4636,0.0709,The third order awarded to Outokumpu Technology is by Shalkiya Zinc of Kazakhstan for the Shalkiya zinc-lead project in Kazakhstan .

@@ -17,7 +17,8 @@ class AnalysisService:
     def health(self) -> dict[str, object]:
         return {
             "status": "ok",
-            "model_ready": self.analyzer.pipeline is not None,
+            "model_ready": self.analyzer.pipeline is not None or self.analyzer._bert_model is not None,
+            "model_source": self.analyzer.model_source,
             "training_error": self.analyzer.training_error,
         }
 

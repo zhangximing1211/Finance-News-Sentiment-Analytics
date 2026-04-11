@@ -12,3 +12,16 @@ node_modules/
 dist/
 coverage/
 .ipynb_checkpoints/
+
+# Model weights (too large for GitHub, retrain via `make train-bert` / `make train-baseline`)
+*.safetensors
+*.bin
+*.joblib
+data/processed/bert_models/best_model/
+data/processed/bert_models/final_model/
+data/processed/baseline_models/best_baseline.joblib
+data/processed/baseline_models/best_baseline/
+data/processed/baseline_models/tfidf_*/
+
+# HuggingFace cache
+.cache/huggingface/

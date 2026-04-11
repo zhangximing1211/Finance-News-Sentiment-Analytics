@@ -1,0 +1,816 @@
+{
+  "split": "test",
+  "rows": 484,
+  "accuracy": 0.907,
+  "macro_f1": 0.8975,
+  "weighted_f1": 0.9072,
+  "per_class_metrics": {
+    "negative": {
+      "precision": 0.8406,
+      "recall": 0.9508,
+      "f1": 0.8923,
+      "support": 61
+    },
+    "neutral": {
+      "precision": 0.9359,
+      "recall": 0.9164,
+      "f1": 0.9261,
+      "support": 287
+    },
+    "positive": {
+      "precision": 0.8806,
+      "recall": 0.8676,
+      "f1": 0.8741,
+      "support": 136
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "negative",
+      "neutral",
+      "positive"
+    ],
+    "rows": [
+      [
+        58,
+        2,
+        1
+      ],
+      [
+        9,
+        263,
+        15
+      ],
+      [
+        2,
+        16,
+        118
+      ]
+    ]
+  },
+  "decision_confusion_matrix": {
+    "labels": [
+      "negative",
+      "neutral",
+      "positive",
+      "abstain"
+    ],
+    "rows": [
+      [
+        55,
+        2,
+        1,
+        3
+      ],
+      [
+        9,
+        258,
+        12,
+        8
+      ],
+      [
+        2,
+        14,
+        114,
+        6
+      ]
+    ]
+  },
+  "calibration": {
+    "mean_confidence": 0.9512,
+    "expected_calibration_error": 0.0444,
+    "multiclass_brier_score": 0.1562,
+    "bins": [
+      {
+        "bin": "0.0-0.1",
+        "count": 0,
+        "avg_confidence": 0.0,
+        "accuracy": 0.0,
+        "gap": 0.0
+      },
+      {
+        "bin": "0.1-0.2",
+        "count": 0,
+        "avg_confidence": 0.0,
+        "accuracy": 0.0,
+        "gap": 0.0
+      },
+      {
+        "bin": "0.2-0.3",
+        "count": 0,
+        "avg_confidence": 0.0,
+        "accuracy": 0.0,
+        "gap": 0.0
+      },
+      {
+        "bin": "0.3-0.4",
+        "count": 0,
+        "avg_confidence": 0.0,
+        "accuracy": 0.0,
+        "gap": 0.0
+      },
+      {
+        "bin": "0.4-0.5",
+        "count": 0,
+        "avg_confidence": 0.0,
+        "accuracy": 0.0,
+        "gap": 0.0
+      },
+      {
+        "bin": "0.5-0.6",
+        "count": 4,
+        "avg_confidence": 0.5742,
+        "accuracy": 0.5,
+        "gap": 0.0742
+      },
+      {
+        "bin": "0.6-0.7",
+        "count": 20,
+        "avg_confidence": 0.647,
+        "accuracy": 0.65,
+        "gap": 0.003
+      },
+      {
+        "bin": "0.7-0.8",
+        "count": 16,
+        "avg_confidence": 0.7595,
+        "accuracy": 0.6875,
+        "gap": 0.072
+      },
+      {
+        "bin": "0.8-0.9",
+        "count": 22,
+        "avg_confidence": 0.8578,
+        "accuracy": 0.5909,
+        "gap": 0.2668
+      },
+      {
+        "bin": "0.9-1.0",
+        "count": 422,
+        "avg_confidence": 0.9813,
+        "accuracy": 0.9479,
+        "gap": 0.0335
+      }
+    ]
+  },
+  "abstain_policy": {
+    "low_confidence_threshold": 0.66,
+    "coverage": 0.9649,
+    "abstain_rate": 0.0351,
+    "retained_accuracy": 0.9143,
+    "retained_macro_f1": 0.9024,
+    "threshold_selection": {
+      "base_accuracy": 0.907,
+      "low_confidence_threshold": 0.78,
+      "selection_note": "Threshold chosen to improve retained accuracy while keeping at least 70% coverage.",
+      "candidates": [
+        {
+          "threshold": 0.5,
+          "coverage": 1.0,
+          "abstain_rate": 0.0,
+          "retained_accuracy": 0.907,
+          "retained_macro_f1": 0.8975,
+          "kept_rows": 484
+        },
+        {
+          "threshold": 0.52,
+          "coverage": 1.0,
+          "abstain_rate": 0.0,
+          "retained_accuracy": 0.907,
+          "retained_macro_f1": 0.8975,
+          "kept_rows": 484
+        },
+        {
+          "threshold": 0.54,
+          "coverage": 0.9979,
+          "abstain_rate": 0.0021,
+          "retained_accuracy": 0.9068,
+          "retained_macro_f1": 0.8972,
+          "kept_rows": 483
+        },
+        {
+          "threshold": 0.56,
+          "coverage": 0.9979,
+          "abstain_rate": 0.0021,
+          "retained_accuracy": 0.9068,
+          "retained_macro_f1": 0.8972,
+          "kept_rows": 483
+        },
+        {
+          "threshold": 0.58,
+          "coverage": 0.9959,
+          "abstain_rate": 0.0041,
+          "retained_accuracy": 0.9087,
+          "retained_macro_f1": 0.8988,
+          "kept_rows": 482
+        },
+        {
+          "threshold": 0.6,
+          "coverage": 0.9917,
+          "abstain_rate": 0.0083,
+          "retained_accuracy": 0.9104,
+          "retained_macro_f1": 0.9001,
+          "kept_rows": 480
+        },
+        {
+          "threshold": 0.62,
+          "coverage": 0.9835,
+          "abstain_rate": 0.0165,
+          "retained_accuracy": 0.9118,
+          "retained_macro_f1": 0.9013,
+          "kept_rows": 476
+        },
+        {
+          "threshold": 0.64,
+          "coverage": 0.9752,
+          "abstain_rate": 0.0248,
+          "retained_accuracy": 0.9131,
+          "retained_macro_f1": 0.9018,
+          "kept_rows": 472
+        },
+        {
+          "threshold": 0.66,
+          "coverage": 0.9649,
+          "abstain_rate": 0.0351,
+          "retained_accuracy": 0.9143,
+          "retained_macro_f1": 0.9024,
+          "kept_rows": 467
+        },
+        {
+          "threshold": 0.68,
+          "coverage": 0.9566,
+          "abstain_rate": 0.0434,
+          "retained_accuracy": 0.9179,
+          "retained_macro_f1": 0.905,
+          "kept_rows": 463
+        },
+        {
+          "threshold": 0.7,
+          "coverage": 0.9504,
+          "abstain_rate": 0.0496,
+          "retained_accuracy": 0.9217,
+          "retained_macro_f1": 0.9101,
+          "kept_rows": 460
+        },
+        {
+          "threshold": 0.72,
+          "coverage": 0.9442,
+          "abstain_rate": 0.0558,
+          "retained_accuracy": 0.9256,
+          "retained_macro_f1": 0.9149,
+          "kept_rows": 457
+        },
+        {
+          "threshold": 0.74,
+          "coverage": 0.938,
+          "abstain_rate": 0.062,
+          "retained_accuracy": 0.9251,
+          "retained_macro_f1": 0.9143,
+          "kept_rows": 454
+        },
+        {
+          "threshold": 0.76,
+          "coverage": 0.938,
+          "abstain_rate": 0.062,
+          "retained_accuracy": 0.9251,
+          "retained_macro_f1": 0.9143,
+          "kept_rows": 454
+        },
+        {
+          "threshold": 0.78,
+          "coverage": 0.9277,
+          "abstain_rate": 0.0723,
+          "retained_accuracy": 0.9287,
+          "retained_macro_f1": 0.9193,
+          "kept_rows": 449,
+          "selection_note": "Threshold chosen to improve retained accuracy while keeping at least 70% coverage."
+        },
+        {
+          "threshold": 0.8,
+          "coverage": 0.9174,
+          "abstain_rate": 0.0826,
+          "retained_accuracy": 0.9302,
+          "retained_macro_f1": 0.9216,
+          "kept_rows": 444
+        },
+        {
+          "threshold": 0.82,
+          "coverage": 0.905,
+          "abstain_rate": 0.095,
+          "retained_accuracy": 0.9315,
+          "retained_macro_f1": 0.9223,
+          "kept_rows": 438
+        },
+        {
+          "threshold": 0.84,
+          "coverage": 0.9029,
+          "abstain_rate": 0.0971,
+          "retained_accuracy": 0.9336,
+          "retained_macro_f1": 0.9242,
+          "kept_rows": 437
+        },
+        {
+          "threshold": 0.86,
+          "coverage": 0.8926,
+          "abstain_rate": 0.1074,
+          "retained_accuracy": 0.9375,
+          "retained_macro_f1": 0.9276,
+          "kept_rows": 432
+        },
+        {
+          "threshold": 0.88,
+          "coverage": 0.8926,
+          "abstain_rate": 0.1074,
+          "retained_accuracy": 0.9375,
+          "retained_macro_f1": 0.9276,
+          "kept_rows": 432
+        },
+        {
+          "threshold": 0.9,
+          "coverage": 0.8719,
+          "abstain_rate": 0.1281,
+          "retained_accuracy": 0.9479,
+          "retained_macro_f1": 0.9398,
+          "kept_rows": 422
+        }
+      ]
+    }
+  },
+  "class_imbalance_strategy": {
+    "type": "class_weight",
+    "value": "balanced",
+    "note": "Both Logistic Regression and Linear SVM are trained with class_weight='balanced'."
+  },
+  "review_queue_summary": {
+    "queue_size": 17,
+    "high_priority": 5,
+    "medium_priority": 12
+  },
+  "neutral_boundary_analysis": {
+    "margin_threshold": 0.08,
+    "boundary_sample_count": 1,
+    "actual_label_distribution": {
+      "positive": 1
+    },
+    "predicted_label_distribution": {
+      "positive": 1
+    },
+    "samples": [
+      {
+        "sample_id": 986,
+        "actual_label": "positive",
+        "predicted_label": "positive",
+        "confidence": 0.5346,
+        "top_label": "positive",
+        "second_label": "neutral",
+        "top_probability": 0.5346,
+        "second_probability": 0.4636,
+        "neutral_probability": 0.4636,
+        "margin_to_decision": 0.0709,
+        "text": "The third order awarded to Outokumpu Technology is by Shalkiya Zinc of Kazakhstan for the Shalkiya zinc-lead project in Kazakhstan ."
+      }
+    ]
+  },
+  "error_analysis": {
+    "misclassified_count": 45,
+    "top_confusion_pairs": [
+      {
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "count": 16
+      },
+      {
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "count": 15
+      },
+      {
+        "actual_label": "neutral",
+        "predicted_label": "negative",
+        "count": 9
+      },
+      {
+        "actual_label": "negative",
+        "predicted_label": "neutral",
+        "count": 2
+      },
+      {
+        "actual_label": "positive",
+        "predicted_label": "negative",
+        "count": 2
+      },
+      {
+        "actual_label": "negative",
+        "predicted_label": "positive",
+        "count": 1
+      }
+    ],
+    "samples": [
+      {
+        "sample_id": 3900,
+        "actual_label": "neutral",
+        "predicted_label": "negative",
+        "confidence": 0.9942,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The Swedish Maritime Administration has closed the Furusund Channel , which Viking Line normally charters en route to Stockholm ."
+      },
+      {
+        "sample_id": 2206,
+        "actual_label": "positive",
+        "predicted_label": "negative",
+        "confidence": 0.9922,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The company reports a loss for the period of EUR 0.4 mn compared to a loss of EUR 1.9 mn in the corresponding period in 2005 ."
+      },
+      {
+        "sample_id": 1871,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.9911,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "We are also pleased to welcome the new employees to Tieto . '"
+      },
+      {
+        "sample_id": 2876,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.9867,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Etteplan targets to employ at least 20 people in Borlänge ."
+      },
+      {
+        "sample_id": 1667,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.9866,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Three students from Universiti Sains Malaysia have won a study trip to Helsinki ."
+      },
+      {
+        "sample_id": 1406,
+        "actual_label": "neutral",
+        "predicted_label": "negative",
+        "confidence": 0.9855,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The program included operational improvements and reductions in personnel , mainly in the Netherlands ."
+      },
+      {
+        "sample_id": 397,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.9844,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Lemminkainen Oyj said that it has signed credit agreements with Nordea Bank STO : NDA , Pohjola Bank HEL : POH1S , Sampo Bank HEL : SAMAS and Svenska Handelsbanken STO : SHB A ."
+      },
+      {
+        "sample_id": 2449,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.9825,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Finnish food company Raisio Oyj HEL : RAIVV said today it will buy British snacks and confectionery company Big Bear Group plc for an enterprise value of EUR 95.3 million USD 129.9 m ."
+      },
+      {
+        "sample_id": 410,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.9803,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "\" Management decided at the end of 2005 to increase cathode copper capacity ."
+      },
+      {
+        "sample_id": 399,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.9788,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Scandic Feed will also diversify Tosno 's product portfolio further ."
+      },
+      {
+        "sample_id": 4227,
+        "actual_label": "neutral",
+        "predicted_label": "negative",
+        "confidence": 0.9747,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Some 250 people , of whom more than 200 are workers , will be retiring from the Raahe Works between 2008 and 2011 ."
+      },
+      {
+        "sample_id": 1209,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.9681,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Employees are also better prepared to answer calls , since they already have detailed information about the caller before they answer the phone . \""
+      },
+      {
+        "sample_id": 2135,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.967,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Juha Jordan , chief engineer at Glaston , said one of the reasons for choosing Vacon as a global AC drives supplier is that it has service and support centres in the same countries where Glaston operates ."
+      },
+      {
+        "sample_id": 1760,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.9637,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The purpose of this action is to ensure company 's cost effectiveness this year and in the near future ."
+      },
+      {
+        "sample_id": 413,
+        "actual_label": "negative",
+        "predicted_label": "neutral",
+        "confidence": 0.9569,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "A tinyurl link takes users to a scamming site promising that users can earn thousands of dollars by becoming a Google ( NASDAQ : GOOG ) Cash advertiser ."
+      },
+      {
+        "sample_id": 4095,
+        "actual_label": "neutral",
+        "predicted_label": "negative",
+        "confidence": 0.9567,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The company reported a profit of 800,000 euro ($ 1.2 mln)on the sale of its Varesvuo Partners sub-group and a loss of 400,000 euro $ 623,000 caused by the sale of its program production subsidiary Oy Filmiteollisuus Fine Ab ."
+      },
+      {
+        "sample_id": 1358,
+        "actual_label": "neutral",
+        "predicted_label": "negative",
+        "confidence": 0.9446,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The company is now withdrawing the second part , EUR 7.2 mn , of the investment commitment ."
+      },
+      {
+        "sample_id": 420,
+        "actual_label": "neutral",
+        "predicted_label": "negative",
+        "confidence": 0.9403,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Compared with the FTSE 100 index , which rose 51.5 points ( or 0.9 % ) on the day , this was a relative price change of -0.6 % ."
+      },
+      {
+        "sample_id": 4090,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.9391,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The District Court of Helsinki dismissed all charges as the court of first instance in 2005 ."
+      },
+      {
+        "sample_id": 849,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.9238,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "In future , the company intends to look for know-how from outside the company and to cooperate with other actors in the sector ."
+      },
+      {
+        "sample_id": 532,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.9194,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "We have made long-term investments in developing the system 's implementation model ."
+      },
+      {
+        "sample_id": 1141,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.9073,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Finnish Raisio ( Diagnostics ) is launching new DNA-based quick tests to ensure the safety of food ."
+      },
+      {
+        "sample_id": 1713,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.8964,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "I thank Jarmo Ukonaho warmly for his contribution and wish him all the best in the future challenges . \""
+      },
+      {
+        "sample_id": 1685,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.8939,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "We can choose the most efficient , best overall value option for our customers already at the bidding stage ."
+      },
+      {
+        "sample_id": 2642,
+        "actual_label": "neutral",
+        "predicted_label": "negative",
+        "confidence": 0.8913,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The measures taken will cause one-time costs during the final part of 2006 ."
+      },
+      {
+        "sample_id": 3181,
+        "actual_label": "neutral",
+        "predicted_label": "negative",
+        "confidence": 0.8897,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The company has decided to stop the operations of Ruukki Construction Division in Latvia and Lithuania , and concentrate the production and logistics in Parnu , Estonia in 2009 ."
+      },
+      {
+        "sample_id": 1123,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.8855,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "\" Installation of the automatic varnishing line is an important part of the company 's strategy in the region of central and eastern Europe , \" said Jozef Misurec , the director of Ruukki Slovakia ."
+      },
+      {
+        "sample_id": 1952,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.8515,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "\" We will continue to make it easier for users to explore services on their handsets and will work towards bringing Internet to a wider range of devices including mid and low-end devices , \" said Kallasvuo ."
+      },
+      {
+        "sample_id": 1398,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.8512,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The operator is one of 6 operators to have been granted a WiMAX license in Taiwan , and hopes to be the first to launch commercial services in early 2009 ."
+      },
+      {
+        "sample_id": 1251,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.8365,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Ingen is an established medical device manufacturer with an emerging new medical product line for the respiratory market worth an estimated $ 4 billion in the U.S. and $ 8 billion globally ."
+      },
+      {
+        "sample_id": 565,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.8079,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The new agreement , which expands a long-established cooperation between the companies , involves the transfer of certain engineering and documentation functions from Larox to Etteplan ."
+      },
+      {
+        "sample_id": 4365,
+        "actual_label": "negative",
+        "predicted_label": "neutral",
+        "confidence": 0.7882,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "According to the Latvian business register , Uponor Latvia closed in red with LVL 99,000 EUR 139,538.17 USD 194,556.48 on turnover of LVL 2.346 mn for 2009 ."
+      },
+      {
+        "sample_id": 3232,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.7764,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The executive group will participate in the adjustments with a fixed-term 5 % salary cut ."
+      },
+      {
+        "sample_id": 4071,
+        "actual_label": "positive",
+        "predicted_label": "negative",
+        "confidence": 0.7663,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Cost cutting measures , which have produced around EUR70m of savings over the past nine months , have dampened the airline 's loss , Finnair said ."
+      },
+      {
+        "sample_id": 1215,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.7132,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Finnish automation solutions developer Cencorp Corporation ( OMX Helsinki : CNC1V ) said on Friday ( 27 June ) that it has completed employee negotiations regarding a reorganisation of its operations ."
+      },
+      {
+        "sample_id": 3577,
+        "actual_label": "neutral",
+        "predicted_label": "negative",
+        "confidence": 0.71,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Finnish Neste Oil that was previously on the list , has fallen off the list completely ."
+      },
+      {
+        "sample_id": 4439,
+        "actual_label": "negative",
+        "predicted_label": "positive",
+        "confidence": 0.6901,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Stora Enso 's target has been cut to EUR 4.85 from EUR 5.55 and Holmen 's target -- to SEK 135 from SEK 150 ."
+      },
+      {
+        "sample_id": 4515,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.6835,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "In a note to clients published , the Dutch broker described the company 's third quarter results as ` soft ' , although it also noted that Elcoteq retained its guidance , dealers said ."
+      },
+      {
+        "sample_id": 2564,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.6799,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "Stora Enso , a global paper , packaging and wood products company , and Neste Oil , a Finnish company engaged in the refining and marketing of oil , have inaugurated the demonstration plant at Varkaus , Finland for biomass to liquids production utilizing forestry residues ."
+      },
+      {
+        "sample_id": 2215,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.6632,
+        "below_threshold": false,
+        "review_reasons": "",
+        "text": "The divestment of Raisio 's margarine business in May 2009 gave the company a clearer focus on grain-based products ."
+      },
+      {
+        "sample_id": 3252,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.6446,
+        "below_threshold": true,
+        "review_reasons": "low_confidence",
+        "text": "The group reiterated its forecast that handset manufacturers will sell around 915 mln units this year globally ."
+      },
+      {
+        "sample_id": 1836,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.6322,
+        "below_threshold": true,
+        "review_reasons": "low_confidence",
+        "text": "Finnish electronics manufacturer PKC Group Oyj ( OMX Helsinki : PKC1V ) said on Wednesday ( 31 December ) that it has completed the acquisition of MAN Nutzfahrzeuge AG 's cable harness business from MAN Star Trucks & Buses Spolka zoo in Poland ."
+      },
+      {
+        "sample_id": 2985,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.6112,
+        "below_threshold": true,
+        "review_reasons": "low_confidence",
+        "text": "Joint procurement will be later extended to the factories in the Baltic countries ."
+      },
+      {
+        "sample_id": 2251,
+        "actual_label": "neutral",
+        "predicted_label": "positive",
+        "confidence": 0.5935,
+        "below_threshold": true,
+        "review_reasons": "low_confidence",
+        "text": "With the second phase of the new Innova building , Tecnopolis presence in Jyvaskyla will increase to a total of approximately 62,000 floor square meters ."
+      },
+      {
+        "sample_id": 4777,
+        "actual_label": "positive",
+        "predicted_label": "neutral",
+        "confidence": 0.5739,
+        "below_threshold": true,
+        "review_reasons": "low_confidence",
+        "text": "Our superior customer centricity and expertise in digital services set us apart from our competitors ."
+      }
+    ]
+  }
+}

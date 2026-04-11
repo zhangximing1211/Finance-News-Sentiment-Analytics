@@ -1,0 +1,46 @@
+sample_id,actual_label,predicted_label,confidence,below_threshold,review_reasons,text
+3900,neutral,negative,0.9942,False,,"The Swedish Maritime Administration has closed the Furusund Channel , which Viking Line normally charters en route to Stockholm ."
+2206,positive,negative,0.9922,False,,The company reports a loss for the period of EUR 0.4 mn compared to a loss of EUR 1.9 mn in the corresponding period in 2005 .
+1871,neutral,positive,0.9911,False,,We are also pleased to welcome the new employees to Tieto . '
+2876,positive,neutral,0.9867,False,,Etteplan targets to employ at least 20 people in Borlänge .
+1667,neutral,positive,0.9866,False,,Three students from Universiti Sains Malaysia have won a study trip to Helsinki .
+1406,neutral,negative,0.9855,False,,"The program included operational improvements and reductions in personnel , mainly in the Netherlands ."
+397,neutral,positive,0.9844,False,,"Lemminkainen Oyj said that it has signed credit agreements with Nordea Bank STO : NDA , Pohjola Bank HEL : POH1S , Sampo Bank HEL : SAMAS and Svenska Handelsbanken STO : SHB A ."
+2449,positive,neutral,0.9825,False,,Finnish food company Raisio Oyj HEL : RAIVV said today it will buy British snacks and confectionery company Big Bear Group plc for an enterprise value of EUR 95.3 million USD 129.9 m .
+410,neutral,positive,0.9803,False,,""" Management decided at the end of 2005 to increase cathode copper capacity ."
+399,neutral,positive,0.9788,False,,Scandic Feed will also diversify Tosno 's product portfolio further .
+4227,neutral,negative,0.9747,False,,"Some 250 people , of whom more than 200 are workers , will be retiring from the Raahe Works between 2008 and 2011 ."
+1209,positive,neutral,0.9681,False,,"Employees are also better prepared to answer calls , since they already have detailed information about the caller before they answer the phone . """
+2135,positive,neutral,0.967,False,,"Juha Jordan , chief engineer at Glaston , said one of the reasons for choosing Vacon as a global AC drives supplier is that it has service and support centres in the same countries where Glaston operates ."
+1760,positive,neutral,0.9637,False,,The purpose of this action is to ensure company 's cost effectiveness this year and in the near future .
+413,negative,neutral,0.9569,False,,A tinyurl link takes users to a scamming site promising that users can earn thousands of dollars by becoming a Google ( NASDAQ : GOOG ) Cash advertiser .
+4095,neutral,negative,0.9567,False,,"The company reported a profit of 800,000 euro ($ 1.2 mln)on the sale of its Varesvuo Partners sub-group and a loss of 400,000 euro $ 623,000 caused by the sale of its program production subsidiary Oy Filmiteollisuus Fine Ab ."
+1358,neutral,negative,0.9446,False,,"The company is now withdrawing the second part , EUR 7.2 mn , of the investment commitment ."
+420,neutral,negative,0.9403,False,,"Compared with the FTSE 100 index , which rose 51.5 points ( or 0.9 % ) on the day , this was a relative price change of -0.6 % ."
+4090,positive,neutral,0.9391,False,,The District Court of Helsinki dismissed all charges as the court of first instance in 2005 .
+849,positive,neutral,0.9238,False,,"In future , the company intends to look for know-how from outside the company and to cooperate with other actors in the sector ."
+532,neutral,positive,0.9194,False,,We have made long-term investments in developing the system 's implementation model .
+1141,positive,neutral,0.9073,False,,Finnish Raisio ( Diagnostics ) is launching new DNA-based quick tests to ensure the safety of food .
+1713,neutral,positive,0.8964,False,,"I thank Jarmo Ukonaho warmly for his contribution and wish him all the best in the future challenges . """
+1685,positive,neutral,0.8939,False,,"We can choose the most efficient , best overall value option for our customers already at the bidding stage ."
+2642,neutral,negative,0.8913,False,,The measures taken will cause one-time costs during the final part of 2006 .
+3181,neutral,negative,0.8897,False,,"The company has decided to stop the operations of Ruukki Construction Division in Latvia and Lithuania , and concentrate the production and logistics in Parnu , Estonia in 2009 ."
+1123,positive,neutral,0.8855,False,,""" Installation of the automatic varnishing line is an important part of the company 's strategy in the region of central and eastern Europe , "" said Jozef Misurec , the director of Ruukki Slovakia ."
+1952,neutral,positive,0.8515,False,,""" We will continue to make it easier for users to explore services on their handsets and will work towards bringing Internet to a wider range of devices including mid and low-end devices , "" said Kallasvuo ."
+1398,neutral,positive,0.8512,False,,"The operator is one of 6 operators to have been granted a WiMAX license in Taiwan , and hopes to be the first to launch commercial services in early 2009 ."
+1251,neutral,positive,0.8365,False,,Ingen is an established medical device manufacturer with an emerging new medical product line for the respiratory market worth an estimated $ 4 billion in the U.S. and $ 8 billion globally .
+565,positive,neutral,0.8079,False,,"The new agreement , which expands a long-established cooperation between the companies , involves the transfer of certain engineering and documentation functions from Larox to Etteplan ."
+4365,negative,neutral,0.7882,False,,"According to the Latvian business register , Uponor Latvia closed in red with LVL 99,000 EUR 139,538.17 USD 194,556.48 on turnover of LVL 2.346 mn for 2009 ."
+3232,positive,neutral,0.7764,False,,The executive group will participate in the adjustments with a fixed-term 5 % salary cut .
+4071,positive,negative,0.7663,False,,"Cost cutting measures , which have produced around EUR70m of savings over the past nine months , have dampened the airline 's loss , Finnair said ."
+1215,positive,neutral,0.7132,False,,Finnish automation solutions developer Cencorp Corporation ( OMX Helsinki : CNC1V ) said on Friday ( 27 June ) that it has completed employee negotiations regarding a reorganisation of its operations .
+3577,neutral,negative,0.71,False,,"Finnish Neste Oil that was previously on the list , has fallen off the list completely ."
+4439,negative,positive,0.6901,False,,Stora Enso 's target has been cut to EUR 4.85 from EUR 5.55 and Holmen 's target -- to SEK 135 from SEK 150 .
+4515,neutral,positive,0.6835,False,,"In a note to clients published , the Dutch broker described the company 's third quarter results as ` soft ' , although it also noted that Elcoteq retained its guidance , dealers said ."
+2564,neutral,positive,0.6799,False,,"Stora Enso , a global paper , packaging and wood products company , and Neste Oil , a Finnish company engaged in the refining and marketing of oil , have inaugurated the demonstration plant at Varkaus , Finland for biomass to liquids production utilizing forestry residues ."
+2215,positive,neutral,0.6632,False,,The divestment of Raisio 's margarine business in May 2009 gave the company a clearer focus on grain-based products .
+3252,neutral,positive,0.6446,True,low_confidence,The group reiterated its forecast that handset manufacturers will sell around 915 mln units this year globally .
+1836,positive,neutral,0.6322,True,low_confidence,Finnish electronics manufacturer PKC Group Oyj ( OMX Helsinki : PKC1V ) said on Wednesday ( 31 December ) that it has completed the acquisition of MAN Nutzfahrzeuge AG 's cable harness business from MAN Star Trucks & Buses Spolka zoo in Poland .
+2985,neutral,positive,0.6112,True,low_confidence,Joint procurement will be later extended to the factories in the Baltic countries .
+2251,neutral,positive,0.5935,True,low_confidence,"With the second phase of the new Innova building , Tecnopolis presence in Jyvaskyla will increase to a total of approximately 62,000 floor square meters ."
+4777,positive,neutral,0.5739,True,low_confidence,Our superior customer centricity and expertise in digital services set us apart from our competitors .

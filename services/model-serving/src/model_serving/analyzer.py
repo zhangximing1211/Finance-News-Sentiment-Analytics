@@ -242,9 +242,64 @@ class FinanceNewsAnalyzer:
         self.model_metadata: dict[str, Any] = {}
         self.capability_policy = load_capability_policy(self.metadata_path)
         self.secondary_explainer = SecondaryExplainer()
+
+        # FinBERT support
+        self._bert_model = None
+        self._bert_tokenizer = None
+        self._bert_device = None
+        self._bert_max_len: int = 512
+
         self._load_or_train_sentiment_model()
 
+    # ------------------------------------------------------------------
+    # FinBERT loading
+    # ------------------------------------------------------------------
+
+    def _try_load_bert_model(self) -> bool:
+        """Attempt to load a fine-tuned FinBERT model.  Returns True on success."""
+        bert_model_dir = BASE_DIR / "data" / "processed" / "bert_models" / "best_model"
+        bert_metadata_path = BASE_DIR / "data" / "processed" / "bert_models" / "bert_metadata.json"
+
+        if not bert_model_dir.exists():
+            return False
+
+        try:
+            import torch
+            from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+            if torch.cuda.is_available():
+                device = torch.device("cuda")
+            elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+                device = torch.device("mps")
+            else:
+                device = torch.device("cpu")
+
+            self._bert_tokenizer = AutoTokenizer.from_pretrained(str(bert_model_dir))
+            self._bert_model = AutoModelForSequenceClassification.from_pretrained(str(bert_model_dir))
+            self._bert_model.to(device)
+            self._bert_model.eval()
+            self._bert_device = device
+
+            if bert_metadata_path.exists():
+                meta = json.loads(bert_metadata_path.read_text(encoding="utf-8"))
+                self.model_metadata = meta
+                self._bert_max_len = meta.get("hyperparameters", {}).get("max_seq_len", 512)
+                self.capability_policy = load_capability_policy(bert_metadata_path)
+
+            self.model_source = "bert_artifact"
+            self.model_classes = ["negative", "neutral", "positive"]
+            return True
+        except Exception as exc:  # pragma: no cover
+            self.training_error = f"Failed to load FinBERT model: {exc}"
+            return False
+
+    # ------------------------------------------------------------------
+
     def _load_or_train_sentiment_model(self) -> None:
+        # Prefer FinBERT if available
+        if self._try_load_bert_model():
+            return
+
         if self.metadata_path.exists():
             try:
                 self.model_metadata = json.loads(self.metadata_path.read_text(encoding="utf-8"))
@@ -522,6 +577,10 @@ class FinanceNewsAnalyzer:
         return enrichment
 
     def _predict_sentiment_with_model(self, text: str) -> dict[str, float]:
+        # FinBERT path
+        if self._bert_model is not None:
+            return self._predict_with_bert(text)
+
         if not self.pipeline or contains_cjk(text):
             return {}
 
@@ -547,6 +606,29 @@ class FinanceNewsAnalyzer:
             }
 
         return {}
+
+    def _predict_with_bert(self, text: str) -> dict[str, float]:
+        """Run inference through the fine-tuned FinBERT model."""
+        import torch
+
+        encoding = self._bert_tokenizer(
+            text,
+            max_length=self._bert_max_len,
+            padding="max_length",
+            truncation=True,
+            return_tensors="pt",
+        )
+        input_ids = encoding["input_ids"].to(self._bert_device)
+        attention_mask = encoding["attention_mask"].to(self._bert_device)
+
+        with torch.no_grad():
+            outputs = self._bert_model(input_ids=input_ids, attention_mask=attention_mask)
+            probs = torch.softmax(outputs.logits, dim=-1).cpu().numpy()[0]
+
+        return {
+            label: float(probs[idx])
+            for idx, label in enumerate(self.model_classes)
+        }
 
     def _collect_matches(self, text: str, patterns: list[WeightedPattern]) -> tuple[float, list[str]]:
         score = 0.0

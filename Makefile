@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: audit-data train-baseline evaluate-baseline train test api web tree process-review-queue review-queue-digest daily-report weekly-report feedback-loop-maintenance
+.PHONY: audit-data train-baseline evaluate-baseline train train-bert evaluate-bert test api web tree process-review-queue review-queue-digest daily-report weekly-report feedback-loop-maintenance
 
 audit-data:
 	$(PYTHON) services/trainer/scripts/prepare_data.py
@@ -13,6 +13,12 @@ train-baseline:
 
 evaluate-baseline:
 	$(PYTHON) services/trainer/scripts/evaluate.py --split test
+
+train-bert:
+	$(PYTHON) services/trainer/scripts/train_bert.py
+
+evaluate-bert:
+	$(PYTHON) services/trainer/scripts/train_bert.py --evaluate-only --split test
 
 test:
 	$(PYTHON) -m unittest discover -s tests

@@ -129,6 +129,8 @@ make audit-data        # 数据审计与切分
 make train-baseline    # baseline 训练
 make evaluate-baseline # baseline 评估
 make train             # 正式训练
+make train-bert        # FinBERT 微调（默认冻结前 8 层，只训最后 4 层 + 分类头）
+make evaluate-bert     # FinBERT 评估
 ```
 
 ### Tests
@@ -159,6 +161,8 @@ make feedback-loop-maintenance  # 自动采样复核 + 周期性再训练检查
 | `make train-baseline` | baseline 训练 |
 | `make evaluate-baseline` | baseline 评估 |
 | `make train` | 正式训练 |
+| `make train-bert` | FinBERT 微调 |
+| `make evaluate-bert` | FinBERT 评估 |
 | `make process-review-queue` | 处理 review queue |
 | `make review-queue-digest` | review 摘要 |
 | `make daily-report` | 日报 |
@@ -240,15 +244,73 @@ cp .env.example .env
 
 其中 `LOW_CONFIDENCE_THRESHOLD_OVERRIDE` 和 `NEUTRAL_BOUNDARY_MARGIN_OVERRIDE` 可用于线上或联调时临时覆盖低置信度阈值与 neutral 边界阈值，无需重训模型。
 
+## 模型评估对比
+
+项目包含两套情绪分类模型，在同一 test split（484 条）上的评估结果如下：
+
+### 整体指标
+
+| 指标 | Baseline (TF-IDF + LinearSVM) | FinBERT (freeze 8/12 layers) | 提升 |
+| --- | ---: | ---: | ---: |
+| **Accuracy** | 0.7872 | **0.9070** | +15.2% |
+| **Macro F1** | 0.7391 | **0.8975** | +21.4% |
+| **Weighted F1** | 0.7791 | **0.9072** | +16.4% |
+| **ECE (校准误差)** | 0.0717 | **0.0444** | −38.1% |
+
+### 每类 Precision / Recall / F1
+
+| 类别 | 模型 | Precision | Recall | F1 | Support |
+| --- | --- | ---: | ---: | ---: | ---: |
+| negative | Baseline | 0.8222 | 0.6066 | 0.6981 | 61 |
+| negative | **FinBERT** | 0.8406 | **0.9508** | **0.8923** | 61 |
+| neutral | Baseline | 0.7874 | 0.9164 | 0.8470 | 287 |
+| neutral | **FinBERT** | **0.9359** | 0.9164 | **0.9261** | 287 |
+| positive | Baseline | 0.7714 | 0.5956 | 0.6722 | 136 |
+| positive | **FinBERT** | **0.8806** | **0.8676** | **0.8741** | 136 |
+
+> **核心提升**：少数类（negative / positive）的 recall 分别从 60.7% → **95.1%**、59.6% → **86.8%**，有效解决了类别不平衡下的漏判问题。
+
+### Abstain 策略
+
+| 指标 | Baseline | FinBERT |
+| --- | ---: | ---: |
+| 低置信度阈值 | 0.50 | 0.66 |
+| 覆盖率 (coverage) | 91.1% | 96.5% |
+| 保留准确率 | 0.8209 | **0.9143** |
+| 保留 Macro F1 | 0.7780 | **0.9024** |
+
+### FinBERT 训练配置
+
+| 参数 | 值 |
+| --- | --- |
+| 预训练模型 | `ProsusAI/finbert` |
+| 微调策略 | 冻结 embeddings + 前 8 层 encoder，只训最后 4 层 + classifier head |
+| 可训练参数 | 28.9M / 109.5M（26.4%） |
+| Loss | CrossEntropyLoss（inverse-frequency class weights） |
+| Optimizer | AdamW（lr=2e-5, weight_decay=0.01） |
+| Scheduler | linear warmup（warmup_ratio=0.1） |
+| Epochs | 4（best epoch = 3，val macro-F1 = 0.9016） |
+| Batch size | 16 |
+| Max sequence length | 128（数据 p99 = 50 词） |
+| 训练数据 | 3,868 条（80/10/10 切分） |
+| 设备 | MPS (Apple Silicon) |
+
+### 推理切换
+
+- 当 `data/processed/bert_models/best_model/` 存在时，analyzer 自动加载 FinBERT（优先级高于 sklearn）
+- 推理输出格式与 baseline 完全一致，低置信度时仍走 LLM 复判 → 告警 → review queue 闭环
+- 可通过删除 `bert_models/` 目录回退到 baseline
+
 ## 当前说明
 
 - `apps/web` 已经改成 Next.js 形态脚手架，但默认未安装 node 依赖
 - `apps/api` 已切换为 FastAPI 入口定义，但运行前需要安装 `pydantic`、`fastapi`、`uvicorn`
-- 现有训练与推理依然基于经典机器学习与规则引擎，适合最小闭环与后续迭代
+- 情绪分类默认使用 FinBERT 微调模型；若未训练 BERT 则回退到 TF-IDF + SVM baseline
 - `secondary_explainer` 已支持真实 OpenAI 调用；无 key 时会退回模板解释，不会阻断主链路
 - `LLMReviewer` 只在低置信度路径触发，正常高置信度样本不会额外调用外部 LLM
 - 数据审计与切分脚本在 `services/trainer/scripts/prepare_data.py`，会生成 `data/processed/*.csv`、`data_description.md` 和 `notebooks/eda/data_audit.ipynb`
 - baseline 训练脚本在 `services/trainer/scripts/train_baseline.py`，评估脚本在 `services/trainer/scripts/evaluate.py`
+- FinBERT 微调脚本在 `services/trainer/scripts/train_bert.py`，训练模块在 `services/trainer/src/trainer_service/train_bert.py`
 
 ## Docker 部署
 

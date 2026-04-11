@@ -1,0 +1,45 @@
+sample_id,actual_label,predicted_label,confidence,below_threshold,review_reasons,text
+1100,positive,neutral,0.9914,False,,"The report provides a comprehensive insight into the company , including business structure and operations , executive biographies and key competitors ."
+4566,neutral,negative,0.9903,False,,Sales were down 14 per cent in Finland and up 27 per cent abroad where sales were lifted by the strong growth in sales in Russia and Lithuania .
+658,positive,negative,0.9849,False,,Unit costs for flight operations fell by 6.4 percent .
+1468,neutral,positive,0.9814,False,,""" Rapala is excited to be partnering with RBFF and other industry leaders on this holiday promotion . """
+4107,negative,neutral,0.9795,False,,"In this case , the effect would be negative in Finland ."
+878,positive,neutral,0.9782,False,,Sony Ericsson and Nokia dominated the list of best-selling handsets with five models each .
+2968,positive,neutral,0.9758,False,,"It currently employs about 750 people and expects headcount to reach 1,000 by end of 2007 ."
+1614,neutral,positive,0.9752,False,,"The company said production volumes so far indicate the circuit is capable of the targeted output rate of 60,000 tonnes per day , or 22 million tonnes a year ."
+2597,positive,neutral,0.9737,False,,The company said that it has started to investigate streamlining its operations in order to meet the tightening competition on the mobile phone charger market .
+76,neutral,positive,0.9466,False,,"Other measures included increasing synergies and economies of scale within the Grimaldi Group and personnel adjustments , divestments and redelivery of excess tonnage ."
+1927,neutral,positive,0.9453,False,,"We have sound experience of project deliveries for large multi-purpose complexes and sports arenas "" , says Sami Eronen , SVP , Infrastructure and Northern Europe , Ruukki Construction ."
+482,positive,negative,0.9401,False,,"Compared with the FTSE 100 index , which rose 28.3 points or 0.5 % on the day , this was a relative price change of 2.3 % ."
+63,positive,neutral,0.94,False,,"At first the contract envisaged the construction of three ferryboats with an option for two more units , further confirmed at a total value of 500 mln euro ( $ 645.8 mln ) ."
+2171,positive,neutral,0.9373,False,,"Previously , EB delivered a custom solution for LG Electronics and now is making it commercially available for other mobile terminal vendors as well as to wireless operators ."
+3524,negative,neutral,0.9367,False,,As a result some 20 persons will no longer be needed .
+3006,positive,neutral,0.9352,False,,"( ADP News ) - Nov 28 , 2008 - Finnish power-supply solutions provider Efore Oyj ( OMX : EFO1V ) announced today the launch of OPUS DC , the latest power system in its OPUS product line ."
+1066,positive,neutral,0.9205,False,,"Pearl Plaza LLC , the joint venture of SRV and Shanghai Industrial Investment Holdings Co Ltd , has concluded the investment decision on construction of the first phase of the shopping center in Saint Petersburg , Russia ."
+431,positive,neutral,0.8941,False,,"In September 2010 , the Finnish group agreed to buy Danish company Rose Poultry A-S for up to EUR23 .9 m in a combination of cash and stock ."
+79,neutral,positive,0.8858,False,,The fuel purchase contracts have been signed with three months ' delivery from this September to November .
+1801,neutral,positive,0.8841,False,,"Mr. Mika Korpinen , APAC Vice President for Comptel concludes : "" Comptel is once again demonstrating the importance of providing reliable delivery and enabling time-to-market ."
+3393,neutral,positive,0.8738,False,,The venture recently agreed to buy Motorola 's wireless networks business for $ 1.2 billion and to deploy LightSquared 's national 4G network .
+862,neutral,positive,0.8658,False,,Net sales in 2007 totalled EUR 329 million and the operating margin was above 19 % .
+725,positive,negative,0.858,False,,"9 September 2010 - Finnish stationery and gift retailer Tiimari HEL : TII1V said today its net sales rose by 2 % year-on-year to EUR5 .7 m in August 2010 , driven by growth in Finland , while demand in the Baltics remained weak ."
+4427,negative,neutral,0.8523,False,,""" We can say that the number of deals has become normalized by the moment , and therefore we have decided to devalue our apartments now on sale , "" he added ."
+2755,neutral,positive,0.8222,False,,"According to Olvi , the company is already negotiating new agreements ."
+898,positive,negative,0.8138,False,,The company will also be compensated for acting as a reserve batch plant .
+1674,neutral,positive,0.7644,False,,"To showcase our end-to-end capabilities at the Mobile World Congress , we arranged an internal MeeGo application development competition to entice developers to create new applications ."
+2693,neutral,positive,0.7232,False,,Wärtsilä 's aim is to serve the rapidly growing number of vessels and increasing marine activity in the Barents Sea region .
+470,neutral,positive,0.7167,False,,Finnish house manufacturers are targeting the strongly growing one-family house market in Russia .
+4457,positive,neutral,0.7123,False,,The main strength of the cooperation project lies in merging the know-how of two large companies .
+4140,neutral,negative,0.7097,False,,"A worm set to activate Friday will corrupt documents using the most common file types , including "" ."
+2897,neutral,positive,0.6584,True,low_confidence,"Finnish publisher Alma Media ( HEL : ALN1V ) said Wednesday it has decided to further extend its EUR1 .85 ( USD2 .75 ) apiece mandatory tender offer for media group Talentum ( HEL : TTM1V ) , which started on 19 August , until 16 November ."
+534,neutral,positive,0.6506,True,low_confidence,"With this subscription , Fortum 's ownership in TGK-10 has increased to slightly over 76 % of shares and voting rights ."
+644,positive,negative,0.6414,True,low_confidence,"Finnish steel maker Rautaruukki Oyj ( HEL : RTRKS ) , or Ruukki , said today its net loss contracted to EUR 49 million ( USD 68.2 m ) for the first nine months of 2010 from EUR 229 million for the same period a year ago ."
+1318,positive,neutral,0.6325,True,low_confidence,Ramirent is the leading construction machinery rental company in Finland with annual sales of EUR 134 million in 2009 and operating nationwide through 83 outlets and 612 employees .
+2526,negative,positive,0.6271,True,low_confidence,Operating cash flow after investments totalled EUR 61.3 mn compared to EUR 75.3 mn in the corresponding period in 2007 .
+1647,neutral,positive,0.6099,True,low_confidence,The second-quarter net sales are expected to be on par with the first quarter of 2009 .
+1006,neutral,positive,0.5901,True,low_confidence,""" Thanks to my Nokia and Lulu , I am now proud to be a published His novel can be found here ."
+2792,neutral,positive,0.5838,True,low_confidence,"An acquisition of TeliaSonera would be France Telecom 's biggest since its 2000 purchase of Orange plc for 27.8 billion ( $ 55.1 billion ) and would create the world 's fourth-largest telecom company behind AT&T Inc. , Verizon Communications Inc. and NTT Corp. of Japan ."
+73,neutral,positive,0.5781,True,low_confidence,"As a result of the share issue , the number of the company 's shares increases by 391,630 shares and the share capital by a total of EUR 15,665.20 ."
+4536,neutral,positive,0.5202,True,"low_confidence,neutral_boundary",BioTie North-American licensing partner Somaxon Pharmaceuticals started a phase II-III clinical study in patients suffering from pathological gambling and a pilot phase II study in nicotine addiction smoking cessation .
+1758,neutral,positive,0.5128,True,"low_confidence,neutral_boundary",The goal is to secure the company 's profitability and competitiveness .
+2348,neutral,positive,0.5056,True,"low_confidence,neutral_boundary",""" Fixed Mobile Convergence solutions represent a key value proposition in today 's communication market ."
+4263,neutral,positive,0.4987,True,"low_confidence,neutral_boundary","The redesigned crushing circuit has been in operation since the start of September and its overall production rate on a weekly basis is in excess of an average of 40,000 tonnes a day ."

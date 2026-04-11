@@ -1,0 +1,18 @@
+sample_id,priority,predicted_label,confidence,reasons,top_negative_probability,top_neutral_probability,top_positive_probability,text
+986,high,positive,0.5346,"low_confidence,neutral_boundary",0.0018,0.4636,0.5346,The third order awarded to Outokumpu Technology is by Shalkiya Zinc of Kazakhstan for the Shalkiya zinc-lead project in Kazakhstan .
+1836,medium,neutral,0.6322,low_confidence,0.0024,0.6322,0.3655,Finnish electronics manufacturer PKC Group Oyj ( OMX Helsinki : PKC1V ) said on Wednesday ( 31 December ) that it has completed the acquisition of MAN Nutzfahrzeuge AG 's cable harness business from MAN Star Trucks & Buses Spolka zoo in Poland .
+2001,medium,neutral,0.624,low_confidence,0.0019,0.624,0.3741,Both companies ' existing investment plans will be coordinated .
+2251,high,positive,0.5935,low_confidence,0.0017,0.4048,0.5935,"With the second phase of the new Innova building , Tecnopolis presence in Jyvaskyla will increase to a total of approximately 62,000 floor square meters ."
+2285,medium,neutral,0.6444,low_confidence,0.0019,0.6444,0.3537,"Nokia will deliver a WCDMA 3G-HSPA radio network , including the modular , high capacity Nokia Flexi WCDMA base station to Indosat ."
+2863,medium,positive,0.6555,low_confidence,0.003,0.3416,0.6555,"Dubbed Nokia Money Solutions , company officials say the initiative would seek to bridge the gap between the banked and unbanked in developing countries ."
+2985,medium,positive,0.6112,low_confidence,0.0016,0.3872,0.6112,Joint procurement will be later extended to the factories in the Baltic countries .
+3048,medium,neutral,0.6146,low_confidence,0.3709,0.6146,0.0145,Nordea 's chairman of the board Hans Dalborg has informed the nomination committee that he will not be up for re-election at the Annual General Meeting in 2011 .
+3252,medium,positive,0.6446,low_confidence,0.0019,0.3535,0.6446,The group reiterated its forecast that handset manufacturers will sell around 915 mln units this year globally .
+3887,medium,neutral,0.6508,low_confidence,0.3406,0.6508,0.0086,The result before taxes was a loss of 25.0 million euros .
+4039,medium,negative,0.6496,low_confidence,0.6496,0.3465,0.0039,The company reported today an operating loss of EUR0 .1 m on net sales of EUR4 .5 m for the first quarter 2008 .
+4065,medium,negative,0.6296,low_confidence,0.6296,0.3645,0.0058,"The poorest index figure was given to Finnish power company Fortum , 4.5 ."
+4362,medium,negative,0.6325,low_confidence,0.6325,0.3563,0.0112,""" Those uncertainties cloud the long-term outlook . """
+4476,medium,positive,0.6156,low_confidence,0.0023,0.3821,0.6156,""" We love Activision 's fresh , colorful approach to Rapala : We Fish , "" said Kelly Brockpahler , Rapala ."
+4589,high,neutral,0.6074,low_confidence,0.13,0.6074,0.2626,"The highest growth would be in China , while weakening demand would continue in North America , UPM said ."
+4765,high,positive,0.5947,low_confidence,0.0019,0.4034,0.5947,"The apartment block will be well-located , in easy reach of the city center and close to both a school and kindergarten ."
+4777,high,neutral,0.5739,low_confidence,0.0062,0.5739,0.4199,Our superior customer centricity and expertise in digital services set us apart from our competitors .
