@@ -243,10 +243,19 @@ class AgentWorkflowRepository:
         review_queue_record_id: int | None,
     ) -> dict[str, Any]:
         created_at = _utc_now_iso()
+        context = analysis_result.get("context", {})
         primary_entity = (
             analysis_result["entities"]["companies"][0]
             if analysis_result["entities"]["companies"]
-            else (analysis_result["entities"]["tickers"][0] if analysis_result["entities"]["tickers"] else "unknown")
+            else (
+                analysis_result["entities"]["tickers"][0]
+                if analysis_result["entities"]["tickers"]
+                else (
+                    context.get("company_name", "").strip()
+                    or context.get("ticker", "").strip()
+                    or "unknown"
+                )
+            )
         )
 
         with self._managed_connection() as connection:
@@ -488,7 +497,19 @@ class AgentWorkflowRepository:
             return True
 
         payload_tickers = {ticker.strip().upper() for ticker in entity_block.get("tickers", []) if ticker}
-        return bool(payload_tickers.intersection(tickers))
+        if payload_tickers.intersection(tickers):
+            return True
+
+        context = payload.get("context", {})
+        if context:
+            ctx_company = context.get("company_name", "")
+            if ctx_company and ctx_company.strip().lower() in company_names:
+                return True
+            ctx_ticker = context.get("ticker", "")
+            if ctx_ticker and ctx_ticker.strip().upper() in tickers:
+                return True
+
+        return False
 
     def _row_to_feedback_record(self, row: sqlite3.Row) -> dict[str, Any]:
         return {
@@ -696,25 +717,52 @@ class AgentWorkflowRepository:
 
         with self._managed_connection() as connection:
             rows = connection.execute(query, params).fetchall()
-            company_names, _ = self._active_watchlist_index(connection)
+            company_names, tickers = self._active_watchlist_index(connection)
 
-        items = [
-            {
-                "id": int(row["id"]),
-                "analysis_run_id": int(row["analysis_run_id"]),
-                "severity": row["severity"],
-                "status": row["status"],
-                "primary_entity": row["primary_entity"],
-                "event_type": row["event_type"],
-                "final_label": row["final_label"],
-                "confidence": round(float(row["confidence"]), 4),
-                "reasons": json.loads(row["reasons_json"]),
-                "message": row["message"],
-                "created_at": row["created_at"],
-                "watchlist_match": row["primary_entity"].strip().lower() in company_names if row["primary_entity"] else False,
-            }
-            for row in rows
-        ]
+            run_ids = [int(row["analysis_run_id"]) for row in rows]
+            context_map: dict[int, dict[str, Any]] = {}
+            if run_ids:
+                placeholders = ",".join("?" * len(run_ids))
+                ctx_rows = connection.execute(
+                    f"SELECT id, input_context_json, result_payload_json FROM agent_runs WHERE id IN ({placeholders})",
+                    run_ids,
+                ).fetchall()
+                for cr in ctx_rows:
+                    ctx = json.loads(cr["input_context_json"]) if cr["input_context_json"] else {}
+                    if not ctx:
+                        payload = json.loads(cr["result_payload_json"]) if cr["result_payload_json"] else {}
+                        ctx = payload.get("context", {})
+                    context_map[int(cr["id"])] = ctx
+
+        items: list[dict[str, Any]] = []
+        for row in rows:
+            pe = row["primary_entity"]
+            match = pe.strip().lower() in company_names if pe else False
+            if not match:
+                ctx = context_map.get(int(row["analysis_run_id"]), {})
+                ctx_company = ctx.get("company_name", "")
+                if ctx_company and ctx_company.strip().lower() in company_names:
+                    match = True
+                if not match:
+                    ctx_ticker = ctx.get("ticker", "")
+                    if ctx_ticker and ctx_ticker.strip().upper() in tickers:
+                        match = True
+            items.append(
+                {
+                    "id": int(row["id"]),
+                    "analysis_run_id": int(row["analysis_run_id"]),
+                    "severity": row["severity"],
+                    "status": row["status"],
+                    "primary_entity": row["primary_entity"],
+                    "event_type": row["event_type"],
+                    "final_label": row["final_label"],
+                    "confidence": round(float(row["confidence"]), 4),
+                    "reasons": json.loads(row["reasons_json"]),
+                    "message": row["message"],
+                    "created_at": row["created_at"],
+                    "watchlist_match": match,
+                }
+            )
         if watchlist_only:
             return [item for item in items if item["watchlist_match"]]
         return items

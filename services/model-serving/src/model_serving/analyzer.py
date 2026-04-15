@@ -208,6 +208,28 @@ ENGLISH_COMPANY_WITH_TICKER_PATTERN = re.compile(
     r"\((?:NASDAQ|NYSE|HKEX|SSE|SZSE|TSX|LSE|TSE|BSE|NSE)\s*[:：]\s*[A-Z0-9.]+\)",
     re.IGNORECASE,
 )
+ENGLISH_PROPER_NAME_PATTERN = re.compile(
+    r"\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,3})\b"
+)
+_PROPER_NAME_STOPWORDS = frozenset({
+    "the", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for",
+    "is", "are", "was", "were", "be", "been", "being", "have", "has", "had",
+    "do", "does", "did", "will", "would", "could", "should", "may", "might",
+    "shall", "can", "if", "it", "its", "this", "that", "these", "those",
+    "not", "no", "nor", "so", "up", "out", "off", "over", "under", "about",
+    "after", "before", "between", "from", "into", "through", "during", "with",
+    "as", "of", "by", "he", "she", "we", "they", "i", "my", "his", "her",
+    "our", "your", "their", "who", "what", "which", "when", "where", "how",
+    "all", "each", "both", "few", "more", "most", "some", "any", "every",
+    "new", "old", "big", "small", "long", "short", "first", "last",
+    "also", "just", "than", "then", "now", "here", "there", "very",
+    "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday",
+    "january", "february", "march", "april", "may", "june", "july",
+    "august", "september", "october", "november", "december",
+    "said", "says", "according", "reported", "announced", "shares",
+    "market", "stock", "price", "quarter", "year", "revenue", "profit",
+    "growth", "analyst", "investors", "trading", "report", "financial",
+})
 CHINESE_COMPANY_PATTERN = re.compile(
     r"([\u4e00-\u9fffA-Za-z0-9]{2,30}(?:股份有限公司|有限公司|集团|控股|科技|银行|证券|药业|汽车|能源|电子|通信|实业))"
 )
@@ -743,6 +765,12 @@ class FinanceNewsAnalyzer:
         companies.extend(match.group(1) for match in ENGLISH_COMPANY_WITH_TICKER_PATTERN.finditer(text))
         companies.extend(match.group(1) for match in ENGLISH_COMPANY_PATTERN.finditer(text))
         companies.extend(match.group(1) for match in CHINESE_COMPANY_PATTERN.finditer(text))
+
+        if not companies:
+            for match in ENGLISH_PROPER_NAME_PATTERN.finditer(text):
+                name = match.group(1)
+                if name.lower() not in _PROPER_NAME_STOPWORDS and len(name) >= 3:
+                    companies.append(name)
 
         tickers: list[str] = []
         for pattern in TICKER_PATTERNS:
