@@ -382,6 +382,7 @@ class FinanceNewsAnalyzer:
             ml_probabilities=ml_probabilities,
             rule_probabilities=rule_signal["probabilities"],
             has_cjk=contains_cjk(normalized_text),
+            has_bert=self._bert_model is not None,
         )
         capability_decision = self.capability_policy.decide(probabilities)
         signal_confidence = self._calculate_confidence(
@@ -705,14 +706,21 @@ class FinanceNewsAnalyzer:
         ml_probabilities: dict[str, float],
         rule_probabilities: dict[str, float],
         has_cjk: bool,
+        has_bert: bool = False,
     ) -> dict[str, float]:
         if not ml_probabilities:
             return rule_probabilities
 
         ml_confidence = max(ml_probabilities.values())
-        ml_weight = 0.72 if not has_cjk else 0.0
-        if ml_confidence < 0.58:
-            ml_weight = 0.55
+        if has_bert:
+            if not has_cjk:
+                ml_weight = 0.78 if ml_confidence >= 0.58 else 0.60
+            else:
+                ml_weight = 0.50 if ml_confidence >= 0.58 else 0.35
+        else:
+            ml_weight = 0.72 if not has_cjk else 0.0
+            if ml_confidence < 0.58:
+                ml_weight = 0.55 if not has_cjk else 0.0
         rule_weight = 1.0 - ml_weight
 
         blended = {

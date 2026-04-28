@@ -243,7 +243,7 @@ class AgentWorkflowRepository:
         review_queue_record_id: int | None,
     ) -> dict[str, Any]:
         created_at = _utc_now_iso()
-        context = analysis_result.get("context", {})
+        context = analysis_result.get("context") or {}
         primary_entity = (
             analysis_result["entities"]["companies"][0]
             if analysis_result["entities"]["companies"]
@@ -251,8 +251,8 @@ class AgentWorkflowRepository:
                 analysis_result["entities"]["tickers"][0]
                 if analysis_result["entities"]["tickers"]
                 else (
-                    context.get("company_name", "").strip()
-                    or context.get("ticker", "").strip()
+                    (context.get("company_name") or "").strip()
+                    or (context.get("ticker") or "").strip()
                     or "unknown"
                 )
             )
